@@ -27,6 +27,9 @@ jobs:
             MODULE: app
             NDK_VERSION: 29.0.14206865
             CMAKE_VERSION: 3.30.3
+            JAVA_TOOL_OPTIONS: ""
+            _JAVA_OPTIONS: ""
+            JDK_JAVA_OPTIONS: ""
 
         steps:
             - name: Checkout repository
@@ -128,7 +131,6 @@ jobs:
               uses: actions/upload-artifact@v4
               with:
                   name: xemu-android-debug-${{ github.sha }}
-                  # gradlew is in android/, so build output is also under android/
                   path: android/${{ env.MODULE }}/build/outputs/apk/debug/*.apk
                   if-no-files-found: error
 
