@@ -28,7 +28,7 @@ jobs:
                   java-version: "21"
 
             - name: Make Gradle executable
-              run: chmod +x ./gradlew
+              run: chmod +x ./android/gradlew
 
             - name: Decode Keystore
               if: github.event.inputs.build_type == 'release'
@@ -45,11 +45,11 @@ jobs:
 
             - name: Build debug APK
               if: github.event.inputs.build_type == 'debug'
-              run: ./gradlew assembleDebug
+              run: ./android/gradlew assembleDebug
 
             - name: Build release APK
               if: github.event.inputs.build_type == 'release'
-              run: ./gradlew assembleRelease
+              run: ./android/gradlew assembleRelease
 
             - name: Upload debug APK artifact
               if: github.event.inputs.build_type == 'debug'
